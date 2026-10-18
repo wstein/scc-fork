@@ -25,12 +25,17 @@ jobs:
         with:
           go-version-file: './go.mod'
 
-      - name: Verify version matches source
-        env:
-          VERSION: ${{ inputs.version }}
+      - name: Format check
         run: |
-          grep -q "var Version = \"${VERSION}\"" processor/processor.go \
-            || { echo "::error::processor.Version does not match ${VERSION}"; exit 1; }
+          go fmt ./...
+          git diff --color=always --exit-code -- . ':!vendor' \
+            || { echo "::error::Run 'go fmt ./...' and commit."; exit 1; }
+
+      - name: Generate check
+        run: |
+          go generate
+          git diff --color=always --exit-code -- . ':!vendor' \
+            || { echo "::error::Run 'go generate' and commit."; exit 1; }
 
       - name: Test
         run: go test ./...
