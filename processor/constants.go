@@ -4489,6 +4489,9 @@ var languageDatabase = map[string]Language{
 			"== ",
 			"catch ",
 			"catch(",
+			"try ",
+			"try{",
+			"throw ",
 			"spawn ",
 		},
 		Extensions: []string{
@@ -4511,6 +4514,7 @@ var languageDatabase = map[string]Language{
 		},
 		NestedMultiLine: false,
 		Keywords:        []string{},
+		Heuristics:      []Heuristic{},
 		FileNames:       []string{},
 		SheBangs:        []string{},
 	},

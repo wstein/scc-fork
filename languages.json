@@ -2675,6 +2675,9 @@
       "== ",
       "catch ",
       "catch(",
+      "try ",
+      "try{",
+      "throw ",
       "spawn "
     ],
     "extensions": ["flix"],
