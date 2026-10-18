@@ -20,6 +20,17 @@ These can change scc's output or behaviour for an identical invocation against
 - **Per-user and per-project config overrides** (#724) — scc now reads config
   overrides from user/project locations. A repository containing a config file
   will behave differently than under 3.7.0 for the same command.
+- **Complexity counts corrected for TypeScript, TypeScript Typings, ArkTs, C3,
+  C Header, Templ and SystemVerilog** — the first six previously counted both
+  the dispatch keyword (`switch`) and every `case` arm, inflating complexity
+  for any file with a multi-arm switch (a 5-case switch scored 6 instead of
+  1); they now count the dispatch keyword once, matching the existing
+  convention already used by Java, Kotlin, Go and Scala. SystemVerilog had a
+  different problem — `switch` and `casexz` aren't real SystemVerilog
+  keywords at all and never matched real code, so they're removed (the real
+  dispatch keywords, `case`/`casex`/`casez`, already counted correctly and are
+  unchanged). Files with switch statements will show lower complexity than
+  before for the first six; this is a correction, not a regression.
 
 ## ✨ New features
 
