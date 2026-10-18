@@ -49,9 +49,18 @@ jobs:
           git tag -a "v${VERSION}" -m "Release v${VERSION}"
           git push origin "v${VERSION}"
 
+      - name: Changelog (diff relative to master)
+        run: |
+          {
+            echo "## Changes since master"
+            echo
+            git log --no-merges --format='- %s (%h)' origin/master..HEAD \
+              | grep -v -E '^- (docs|test):'
+          } > "$RUNNER_TEMP/release-notes.md"
+
       - uses: goreleaser/goreleaser-action@v6
         with:
           version: '~> v2'
-          args: release --clean
+          args: release --clean --release-notes=${{ runner.temp }}/release-notes.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
