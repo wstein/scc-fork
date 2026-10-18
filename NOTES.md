@@ -45,7 +45,9 @@ These can change scc's output or behaviour for an identical invocation against
 
 - Linguist-inspired language detection (#721).
 - New / updated languages: Mojo (#685), Zen C (#708), XHTML (#681),
-  IEC61131-3 Siemens extensions (#702), Mog (#683), Phoenix LiveView fix (#722).
+  IEC61131-3 Siemens extensions (#702), Mog (#683), Phoenix LiveView fix (#722),
+  Flix (new — functional/imperative/logic language for the JVM, including
+  Datalog rule-head complexity counting).
 - Patch/diff: recognize `.diff` files as Patch (#705).
 - Rust: count the `?` try operator toward complexity (#701).
 - C/C++ language information updated (#691); CUDA updated (#693).

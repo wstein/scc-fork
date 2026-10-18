@@ -614,6 +614,8 @@ The conditions it looks for are compiled into the code and you can get an idea f
 
 The increment happens for each of the matching conditions and produces the number you see.
 
+For languages with a `switch`/`match`/`when`-style dispatch construct, the convention is to count the dispatch keyword once per statement, not once per case/arm — this is how Java's `switch`, Kotlin's `when` and Scala's `match` are all defined, and newly added languages should follow it too. Counting each arm individually inflates files with many short branches relative to files with few large ones, and in languages where the same keyword is reused for a non-branching purpose (e.g. Flix's `case`, which also introduces enum variants) it can't be told apart from a real branch at the token-scanning level scc uses, so it's left out entirely rather than over-counted.
+
 ### Unique Lines of Code (ULOC)
 
 ULOC stands for Unique Lines of Code and represents the unique lines across languages, files and the project itself. This idea was taken from

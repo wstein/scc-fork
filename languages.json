@@ -2658,14 +2658,9 @@
       "else{",
       "match ",
       "match(",
-      "case ",
-      "for ",
-      "for(",
       "foreach ",
       "foreach(",
       "forM ",
-      "while ",
-      "while(",
       "and ",
       "or ",
       "not ",
@@ -2678,11 +2673,13 @@
       "try ",
       "try{",
       "throw ",
-      "spawn "
+      "spawn ",
+      ":-"
     ],
     "extensions": ["flix"],
     "line_comment": ["//"],
     "multi_line": [["/*", "*/"]],
+    "nestedmultiline": true,
     "quotes": [
       {
         "end": "\"",
