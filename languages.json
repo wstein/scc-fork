@@ -825,9 +825,11 @@
     "complexitychecks": [
       "if ",
       "if(",
+      "elif ",
+      "else ",
       "switch ",
       "match ",
-      "case ",
+      "dispatch ",
       "| ",
       "|| ",
       "& ",

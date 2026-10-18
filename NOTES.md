@@ -37,6 +37,13 @@ These can change scc's output or behaviour for an identical invocation against
   branch operators (`:-`, `;`, `->`, `\+`) and comparisons. Prolog files will
   show meaningfully higher complexity than before; this reflects real logic
   that was previously invisible to the heuristic entirely.
+- **Complexity counts corrected for Bosque** — verified against the real
+  parser (BosqueLanguage/BosqueCore): `case` is not a Bosque keyword at all
+  (switch/match/dispatch arms are `guard => block`, never `case guard =>
+  block`) and never fired on real code, so it's removed. `dispatch` is a real
+  third arm-dispatch construct that wasn't counted at all, and `elif`/`else`
+  are real if-elif-else keywords that were also missing; both are now
+  counted, matching every other language's if/else-if/else handling.
 
 ## ✨ New features
 

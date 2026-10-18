@@ -1449,9 +1449,11 @@ var languageDatabase = map[string]Language{
 		ComplexityChecks: []string{
 			"if ",
 			"if(",
+			"elif ",
+			"else ",
 			"switch ",
 			"match ",
-			"case ",
+			"dispatch ",
 			"| ",
 			"|| ",
 			"& ",
