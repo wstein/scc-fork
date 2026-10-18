@@ -2650,6 +2650,43 @@
     ],
     "shebangs": ["fish"]
   },
+  "Flix": {
+    "complexitychecks": [
+      "if ",
+      "if(",
+      "else ",
+      "else{",
+      "match ",
+      "match(",
+      "case ",
+      "for ",
+      "for(",
+      "foreach ",
+      "foreach(",
+      "forM ",
+      "while ",
+      "while(",
+      "and ",
+      "or ",
+      "not ",
+      "|| ",
+      "&& ",
+      "!= ",
+      "== ",
+      "catch ",
+      "catch(",
+      "spawn "
+    ],
+    "extensions": ["flix"],
+    "line_comment": ["//"],
+    "multi_line": [["/*", "*/"]],
+    "quotes": [
+      {
+        "end": "\"",
+        "start": "\""
+      }
+    ]
+  },
   "Flow9": {
     "complexitychecks": [
       "if ",
