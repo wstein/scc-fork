@@ -1,0 +1,52 @@
+name: Release
+
+# Release builds run for the develop branch only.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version without leading v (e.g. 4.1.1)'
+        required: true
+        default: '4.1.1'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version-file: './go.mod'
+
+      - name: Verify version matches source
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          grep -q "var Version = \"${VERSION}\"" processor/processor.go \
+            || { echo "::error::processor.Version does not match ${VERSION}"; exit 1; }
+
+      - name: Test
+        run: go test ./...
+
+      - name: Tag
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git tag -a "v${VERSION}" -m "Release v${VERSION}"
+          git push origin "v${VERSION}"
+
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          version: '~> v2'
+          args: release --clean
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
