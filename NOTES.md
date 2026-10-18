@@ -31,6 +31,12 @@ These can change scc's output or behaviour for an identical invocation against
   dispatch keywords, `case`/`casex`/`casez`, already counted correctly and are
   unchanged). Files with switch statements will show lower complexity than
   before for the first six; this is a correction, not a regression.
+- **Complexity counts corrected for Prolog** — the complexity list was a
+  C-family template with no real Prolog keywords in it (`for`/`if`/`switch`/
+  `while`/`else` don't exist in standard Prolog); it now counts the real
+  branch operators (`:-`, `;`, `->`, `\+`) and comparisons. Prolog files will
+  show meaningfully higher complexity than before; this reflects real logic
+  that was previously invisible to the heuristic entirely.
 
 ## ✨ New features
 
