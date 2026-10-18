@@ -32,6 +32,28 @@
     "multi_line": [["/*", "*/"]],
     "quotes": [{"end": "'", "start": "'"}]
   },
+  "ANTLR": {
+    "complexitychecks": ["|"],
+    "complexitychecks_postfix": ["?", "*", "+"],
+    "complexitychecks_postfix_excludes": ["+=", "*?", "+?", "??"],
+    "extensions": ["g4"],
+    "line_comment": ["//"],
+    "multi_line": [["/*", "*/"]],
+    "quotes": [
+      {
+        "end": "'",
+        "start": "'"
+      },
+      {
+        "end": "]",
+        "start": "["
+      },
+      {
+        "end": "\"",
+        "start": "\""
+      }
+    ]
+  },
   "Apex": {
     "complexitychecks": [
       "for ",

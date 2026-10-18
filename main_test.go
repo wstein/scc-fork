@@ -859,6 +859,7 @@ func TestSpecificLanguages(t *testing.T) {
 		"Algol 68",
 		"Alloy",
 		"Amber",
+		"ANTLR",
 		"Apex",
 		"ArkTs",
 		"Arturo",

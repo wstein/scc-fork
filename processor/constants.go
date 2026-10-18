@@ -109,6 +109,60 @@ var languageDatabase = map[string]Language{
 		FileNames:       []string{},
 		SheBangs:        []string{},
 	},
+	"ANTLR": {
+		LineComment: []string{
+			"//",
+		},
+		ComplexityChecks: []string{
+			"|",
+		},
+		ComplexityChecksPostfix: []string{
+			"?",
+			"*",
+			"+",
+		},
+		ComplexityChecksPostfixExcludes: []string{
+			"+=",
+			"*?",
+			"+?",
+			"??",
+		},
+		Extensions: []string{
+			"g4",
+		},
+		ExtensionFile: false,
+		MultiLine: [][]string{
+			{
+				"/*",
+				"*/",
+			},
+		},
+		Quotes: []Quote{
+			{
+				Start:        "'",
+				End:          "'",
+				IgnoreEscape: false,
+				DocString:    false,
+			},
+			{
+				Start:        "[",
+				End:          "]",
+				IgnoreEscape: false,
+				DocString:    false,
+			},
+			{
+				Start:        "\"",
+				End:          "\"",
+				IgnoreEscape: false,
+				DocString:    false,
+			},
+		},
+		NestedMultiLine: false,
+		Keywords:        []string{},
+		Heuristics:      []Heuristic{},
+		FileNames:       []string{},
+		SheBangs:        []string{},
+	},
 	"APL": {
 		LineComment: []string{
 			"⍝",
